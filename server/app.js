@@ -8,7 +8,7 @@ const commentRoutes = require('./routes/comment');
 const app = express();
 const PORT = 8080;
 
-app.use(bodyParser.urlencoded()); // x-www-form-urlencoded <form>
+app.use(bodyParser.urlencoded({ extended: true })); // x-www-form-urlencoded <form>
 app.use(bodyParser.json()); // application/json
 
 app.use((req, res, next) => {

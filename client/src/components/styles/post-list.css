@@ -1,0 +1,55 @@
+.post-list {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    margin-left: 10px;
+    padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.post {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagination button {
+    padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
