@@ -1,5 +1,5 @@
 
-const MAIN_URL = 'http://localhost:8080/';
+export const MAIN_URL = 'http://localhost:8080/';
 
 export const CREATE_POST = MAIN_URL + 'post/';
 export const UPDATE_POST = (postId) => `${MAIN_URL}post/${postId}`;

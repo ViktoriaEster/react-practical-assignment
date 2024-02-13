@@ -18,6 +18,11 @@ const postReducer = (state = initialState, action) => {
                 ...state,
                 posts: updatedPosts,
             };
+        case 'GET_POSTS_SUCCESS':
+            return {
+                ...state,
+                posts: action.payload,
+            };
         case 'DELETE_POST_SUCCESS':
             const filteredPosts = state.posts.filter(
                 (post) => post.id !== action.payload.id

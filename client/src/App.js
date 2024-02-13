@@ -1,11 +1,18 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from "./components/common/Header";
-import PostList from "./components/PostList";
-import Post from "./components/Post";
-import './App.css';
 import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import LoginDisplay from './components/LoginDisplay';
+import PostGallery from "./components/PostGallery";
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from './actions/authActions';
+import Post from "./components/Post";
+import PostComments from "./components/PostComments";
+import PostModal from "./components/PostModal";
 
 function App() {
+    const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.user.currentUser);
+
     useEffect(() => {
         // TEST API, it might be removed
         fetch('http://localhost:8080/live')
@@ -16,21 +23,25 @@ function App() {
             .catch(e => console.error('API CONNECTION FAILED, PLEASE CHECK SERVER APP AND TRY AGAIN'));
     }, []);
 
-return (
-    <div className="App">
-        <Router>
-            <div className="App">
+
+    const handleLogin = (username) => {
+        dispatch(loginUser(username));
+    };
+
+    return (
+        <div className="App">
+            <BrowserRouter>
                 <Header />
                 <Routes>
-                    <Route path="/" element={<PostList />} />
-                    <Route path="/post/:postId" element={<Post />} />
+                    <Route path="/" element={currentUser ?
+                            <div>
+                                <PostGallery />
+                            </div>
+                        : <LoginDisplay onLogin={handleLogin} />} />
                 </Routes>
-            </div>
-        </Router>
-
-    </div>
-);
+            </BrowserRouter>
+        </div>
+    );
 }
-
 
 export default App;
